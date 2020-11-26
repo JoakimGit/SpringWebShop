@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/head"></div>
+    <title>Opret kategori</title>
+</head>
+<body>
+<div th:replace="/fragments/navbar"></div>
+
+<div class="container">
+    <br>
+    <h1>Opret kategori</h1>
+    <br>
+    <form action="/category/create" method="post">
+        <div class="form-group">
+            <label for="name">Navn</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Indtast navn">
+        </div>
+        <button type="submit" class="btn btn-primary">Opret</button>
+    </form>
+</div>
+
+<div th:replace="/fragments/bottom_scripts"></div>
+</body>
+</html>

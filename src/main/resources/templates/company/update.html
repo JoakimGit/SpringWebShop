@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/head"></div>
+    <title>Opdater</title>
+</head>
+<body>
+<div th:replace="/fragments/navbar"></div>
+
+<div class="container">
+    <br>
+    <h1>Opdater firma</h1>
+    <br>
+    <form action="/company/update" th:object="${description}" method="post">
+        <input type="hidden" name="companyDesc_id" th:value="${description.getCompanyDesc_id()}">
+        <div class="form-group">
+            <label for="name">Navn</label>
+            <input type="text" class="form-control" id="name" name="name" th:value="${description.getCompany().getName()}">
+        </div>
+        <div class="form-group">
+            <label for="description">Beskrivelse</label>
+            <textarea class="form-control" id="description" name="description" th:field="*{description}"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Opdater</button>
+    </form>
+</div>
+
+<div th:replace="/fragments/bottom_scripts"></div>
+</body>
+</html>

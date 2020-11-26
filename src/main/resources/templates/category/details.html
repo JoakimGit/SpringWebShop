@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/head"></div>
+    <title>Kategori detaljer</title>
+</head>
+<body>
+<div th:replace="/fragments/navbar"></div>
+
+<div class="container">
+    <br>
+    <h1 style="text-align: center">Kategori detaljer</h1>
+    <br>
+    <h3><b>Produkter:</b></h3>
+    <ul>
+        <li th:each="product : ${category.products}">
+            <span th:text="${product.description}"></span>
+        </li>
+    </ul>
+</div>
+
+<div th:replace="/fragments/bottom_scripts"></div>
+</body>
+</html>

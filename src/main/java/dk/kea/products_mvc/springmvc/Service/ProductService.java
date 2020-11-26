@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -13,24 +14,24 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    public List<Product> readAll() {
-        return productRepository.readAll();
+    public List<Product> findAll() {
+        return (List<Product>) productRepository.findAll();
     }
 
-    public Product read(long id) {
-        return productRepository.read(id);
+    public Product findById(long id) {
+        Optional<Product> optionalProduct = productRepository.findById(id);
+        if (optionalProduct.isEmpty()) {
+            throw new RuntimeException("Product not found");
+        }
+        return optionalProduct.get();
     }
 
-    public void create(Product product) {
-        productRepository.create(product);
+    public void save(Product product) {
+        productRepository.save(product);
     }
 
-    public boolean update(Product product) {
-        return productRepository.update(product);
-    }
-
-    public boolean delete(long id) {
-        return productRepository.delete(id);
+    public void deleteById(long id) {
+        productRepository.deleteById(id);
     }
 
 

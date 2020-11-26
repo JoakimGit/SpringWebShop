@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/head"></div>
+    <title>Opret produkt</title>
+</head>
+<body>
+<div th:replace="/fragments/navbar"></div>
+
+<div class="container">
+    <br>
+    <h1>Opret vare</h1>
+    <br>
+    <form action="/product/create" method="post">
+        <div class="form-group">
+            <label for="name">Navn</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Indtast navn">
+        </div>
+        <div class="form-group">
+            <label for="price">Pris</label>
+            <input type="text" class="form-control" id="price" name="price" placeholder="Indtast pris">
+        </div>
+        <div class="form-group">
+            <label for="description">Beskrivelse</label>
+            <input type="text" class="form-control" id="description" name="description" placeholder="Indtast beskrivelse">
+        </div>
+        <div class="form-group">
+            <label for="company_name"><b>Skib:</b></label><br>
+            <select id="company_name" name="company_name" required>
+                <option value="" selected hidden>Vælg firma</option>
+                <option th:each="company : ${companies}" th:value="${company.getCompany_id()}" th:text="${company.getName()}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <span th:each="category : ${categories}">
+                <input type="checkbox" th:id="${category.name}" name="chosen_categories" th:value="${category.name}">
+                <label th:for="${category.name}" th:text="${category.name}"></label><br>
+            </span>
+        </div>
+        <button type="submit" class="btn btn-primary">Opret</button>
+    </form>
+</div>
+
+<div th:replace="/fragments/bottom_scripts"></div>
+</body>
+</html>

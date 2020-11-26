@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/head"></div>
+    <title>Firma detaljer</title>
+</head>
+<body>
+<div th:replace="/fragments/navbar"></div>
+
+<div class="container">
+    <br>
+    <h1 style="text-align: center">Firma detaljer</h1>
+    <br>
+    <h3><b>Firma:</b></h3>
+    <p th:text="${company_description.company.getName()}"></p>
+    <h3><b>Beskrivelse:</b></h3>
+    <p th:text="${company_description.getDescription()}"></p>
+    <h3><b>Produkter:</b></h3>
+    <table class="table table-hover" th:hidden="${#lists.isEmpty(company_description.company.getProducts())}">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Navn</th>
+            <th scope="col">Pris</th>
+            <th scope="col">Beskrivelse</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${company_description.company.getProducts()}">
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.price + ' kr'}"></td>
+            <td th:text="${product.description}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <p th:if="${#lists.isEmpty(company_description.company.getProducts())}">
+        <span>Firmaet har ingen produkter endnu.</span>
+    </p>
+</div>
+
+<div th:replace="/fragments/bottom_scripts"></div>
+</body>
+</html>

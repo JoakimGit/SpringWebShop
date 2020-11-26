@@ -1,43 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Oversigt over varer til salg</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Welcome</title>
 </head>
 <body>
-
-<div class="container">
-    <br>
-    <h1>Oversigt over varerne</h1>
-    <br>
-    <table class="table table-hover">
-    <thead class="thead-dark">
-        <tr>
-            <th>ID</th>
-            <th>Navn</th>
-            <th>Pris</th>
-            <th>Beskrivelse</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr th:each="product : ${prod}">
-            <td th:text="${product.id}"></td>
-            <td th:text="${product.name}"></td>
-            <td th:text="${product.price + ' kr'}"></td>
-            <td th:text="${product.description}"></td>
-            <td>
-                <a th:href="@{'/update/' + ${product.id}}"><button type="button" class="btn btn-primary">Opdater</button></a>
-                <a th:href="@{'/delete/' + ${product.id}}"><button type="button" class="btn btn-danger">Slet</button></a>
-            </td>
-        </tr>
-    </tbody>
-</table>
-    <br>
-    <a href="create"><button type="button" class="btn btn-success">Tilføj ny vare</button></a>
-</div>
+<br><br><br><br><br><br>
+<h1 style="text-align: center">Welcome to my shop. Click <a href="/product">here</a> to go to the webshop</h1>
 
 </body>
 </html>

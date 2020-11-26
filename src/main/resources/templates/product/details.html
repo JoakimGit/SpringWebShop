@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/head"></div>
+    <title>Produkt detaljer</title>
+</head>
+<body>
+<div th:replace="/fragments/navbar"></div>
+
+<div class="container">
+    <br>
+    <h1 style="text-align: center">Produkt detaljer</h1>
+    <br>
+    <h3><b>Produkt:</b></h3>
+    <span><b>ID: </b></span>
+    <span th:text="${product.product_id}"></span><br>
+    <span><b>Navn: </b></span>
+    <span th:text="${product.name}"></span><br>
+    <span><b>Pris: </b></span>
+    <span th:text="${product.price + ' kr'}"></span><br>
+    <span><b>Firmabeskrivelse: </b></span>
+    <span th:text="${product.description}"></span><br>
+    <span><b>Kategorier: </b></span>
+    <span th:each="category, iterStat : ${product.categories}" th:text="${iterStat.last} ? ${category.name} : ${category.name} + ', '"></span>
+    <br><br>
+    <h3><b>Firma:</b></h3>
+    <p th:text="${company_description.company.getName()}"></p>
+    <h3><b>Beskrivelse:</b></h3>
+    <p th:text="${company_description.getDescription()}"></p>
+</div>
+
+<div th:replace="/fragments/bottom_scripts"></div>
+</body>
+</html>

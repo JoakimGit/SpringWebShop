@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/head"></div>
+    <title>Opdater kategori</title>
+</head>
+<body>
+<div th:replace="/fragments/navbar"></div>
+
+<div class="container">
+    <br>
+    <h1>Opdater kategori</h1>
+    <br>
+    <form action="/category/update" method="post">
+        <input type="hidden" name="category_id" th:value="${category.category_id}">
+        <div class="form-group">
+            <label for="name">Navn</label>
+            <input type="text" class="form-control" id="name" name="name" th:value="${category.name}">
+        </div>
+        <button type="submit" class="btn btn-primary">Opdater</button>
+    </form>
+</div>
+
+<div th:replace="/fragments/bottom_scripts"></div>
+</body>
+</html>

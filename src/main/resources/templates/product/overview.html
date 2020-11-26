@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/head"></div>
+    <title>Oversigt over varer til salg</title>
+</head>
+<body>
+<div th:replace="/fragments/navbar"></div>
+
+<div class="container">
+    <br>
+    <h1>Oversigt over varerne</h1>
+    <br>
+    <table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Navn</th>
+            <th>Pris</th>
+            <th>Beskrivelse</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.product_id}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.price + ' kr'}"></td>
+            <td th:text="${product.description}"></td>
+            <td>
+                <a th:href="@{'/product/details/' + ${product.product_id}}"><button type="button" class="btn btn-success">Detaljer</button></a>
+                <a th:href="@{'/product/update/' + ${product.product_id}}"><button type="button" class="btn btn-primary">Opdater</button></a>
+                <a th:href="@{'/product/delete/' + ${product.product_id}}"><button type="button" class="btn btn-danger">Slet</button></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+    <br>
+    <a href="/product/create"><button type="button" class="btn btn-success">Tilføj ny vare</button></a>
+</div>
+
+<div th:replace="/fragments/bottom_scripts"></div>
+</body>
+</html>
